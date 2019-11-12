@@ -1,6 +1,10 @@
 package com.company;
 
 public class CreateEvent {
+    private static final String FOOTBALL_TYPE = "Football";
+    private static final String HORSE_TYPE = "Horse";
+    private static final String FORMULA1 = "Formula1";
+
     private String typeOfEvent;
 
     Competition getEvent(String competitionType) throws NoSuchEventException {
@@ -11,14 +15,14 @@ public class CreateEvent {
          */
         typeOfEvent = competitionType;
 
-        if (competitionType.equals("Football")) {
+        if (FOOTBALL_TYPE.equals(competitionType)) {
             return new FootballCompetition();
-        } else if (competitionType.equals("Horse")) {
+        } else if (HORSE_TYPE.equals(competitionType)) {
             return new HorseCompetition();
-        } else if (competitionType.equals("Formula1")) {
+        } else if (FORMULA1.equals(competitionType)) {
             return new Formula1Competition();
         } else {
-            throw new NoSuchEventException("NEMA");
+            throw new NoSuchEventException(String.format("No such event found with type: %s", competitionType));
         }
     }
 
@@ -71,6 +75,9 @@ public class CreateEvent {
      */
 
 
+    /**
+     * Ignore warnings for id and bet field, since they can be used with other values as well
+     */
     static void bets(Competition competition, int id, double bet) {
         Participant[] participants = competition.getSchedule();
         for(Participant participant: participants) {

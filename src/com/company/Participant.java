@@ -16,8 +16,7 @@ public class Participant {
         this.betForWin = betForWin;
     }
 
-    public Participant() {
-    }
+    public Participant() { }
 
     public int getId() {
         return id;
