@@ -1,0 +1,4 @@
+#Ignore not needed files
+.idea
+out/
+SportEvents.iml
